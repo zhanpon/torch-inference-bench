@@ -1,0 +1,12 @@
+[tool.rye]
+virtual = true
+dev-dependencies = [
+    "click>=8.1.7",
+    "torch==2.2.2+cpu",
+    "torchvision==0.17.2+cpu",
+    "setuptools>=69.5.1",
+]
+
+[[tool.rye.sources]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
