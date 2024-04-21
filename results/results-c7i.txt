@@ -1,0 +1,258 @@
++ python torchvision_bench.py
+<torch.utils.benchmark.utils.common.Measurement object at 0x7f6e24287880>
+do_infer()
+  84.97 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --channels-last
+<torch.utils.benchmark.utils.common.Measurement object at 0x7f7f04d9b880>
+do_infer()
+  78.06 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --bf16
+<torch.utils.benchmark.utils.common.Measurement object at 0x7f47df28f8b0>
+do_infer()
+  73.10 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --bf16 --channels-last
+<torch.utils.benchmark.utils.common.Measurement object at 0x7fbf289978b0>
+do_infer()
+  42.42 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --quantize
+<torch.utils.benchmark.utils.common.Measurement object at 0x7fdfc76993f0>
+do_infer()
+  22.99 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --quantize --channels-last
+<torch.utils.benchmark.utils.common.Measurement object at 0x7fbeb8e2d420>
+do_infer()
+  22.03 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --model-name convnext_tiny
+<torch.utils.benchmark.utils.common.Measurement object at 0x7fc54d883fd0>
+do_infer()
+  92.76 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --model-name convnext_tiny --channels-last
+<torch.utils.benchmark.utils.common.Measurement object at 0x7f54ca697fd0>
+do_infer()
+  98.24 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --model-name convnext_tiny --bf16
+<torch.utils.benchmark.utils.common.Measurement object at 0x7f606a593fd0>
+do_infer()
+  60.06 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --model-name convnext_tiny --bf16 --channels-last
+<torch.utils.benchmark.utils.common.Measurement object at 0x7fa894e8ffd0>
+do_infer()
+  53.16 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --profile
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        44.37%      47.212ms        44.51%      47.358ms       2.368ms            20  
+       aten::_slow_conv2d_forward        31.37%      33.383ms        31.50%      33.519ms       1.016ms            33  
+    aten::max_pool2d_with_indices         6.41%       6.820ms         6.41%       6.820ms       6.820ms             1  
+          aten::native_batch_norm         6.18%       6.577ms         6.28%       6.687ms     126.170us            53  
+                aten::convolution         4.57%       4.861ms        77.55%      82.518ms       1.557ms            53  
+                         do_infer         2.53%       2.690ms       100.00%     106.406ms     106.406ms             1  
+               aten::_convolution         2.43%       2.586ms        77.48%      82.448ms       1.556ms            53  
+                       aten::add_         1.65%       1.753ms         1.65%       1.753ms     109.562us            16  
+                 aten::clamp_min_         1.17%       1.243ms         1.17%       1.243ms      25.367us            49  
+     aten::_batch_norm_impl_index         0.90%     954.000us         7.20%       7.659ms     144.509us            53  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 106.406ms
+
++ python torchvision_bench.py --profile --channels-last
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        46.33%      41.202ms        46.36%      41.226ms       2.061ms            20  
+       aten::_slow_conv2d_forward        36.62%      32.562ms        36.78%      32.704ms     991.030us            33  
+          aten::native_batch_norm         7.71%       6.860ms         7.93%       7.052ms     133.057us            53  
+                aten::convolution         6.78%       6.026ms        83.63%      74.365ms       1.403ms            53  
+                     aten::conv2d         3.32%       2.956ms        83.72%      74.448ms       1.405ms            53  
+               aten::_convolution         2.11%       1.877ms        83.53%      74.284ms       1.402ms            53  
+                       aten::add_         1.77%       1.571ms         1.77%       1.571ms      98.188us            16  
+                 aten::clamp_min_         1.36%       1.210ms         1.36%       1.210ms      24.694us            49  
+                      aten::addmm         0.70%     626.000us         0.71%     635.000us     635.000us             1  
+    aten::max_pool2d_with_indices         0.49%     433.000us         0.49%     433.000us     433.000us             1  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 88.926ms
+
++ python torchvision_bench.py --profile --bf16
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        40.17%      29.776ms        53.85%      39.912ms     753.057us            53  
+                      aten::copy_        31.52%      23.365ms        31.52%      23.365ms     212.409us           110  
+    aten::max_pool2d_with_indices        10.39%       7.698ms        10.39%       7.698ms       7.698ms             1  
+                aten::convolution         5.56%       4.124ms        54.19%      40.168ms     757.887us            53  
+          aten::native_batch_norm         4.08%       3.026ms         4.21%       3.122ms      58.906us            53  
+                 aten::clamp_min_         3.16%       2.341ms         3.16%       2.341ms      47.776us            49  
+                       aten::add_         2.14%       1.584ms         2.14%       1.584ms      99.000us            16  
+                   aten::_to_copy         1.04%     771.000us        19.92%      14.767ms     263.696us            56  
+               aten::_convolution         0.96%     714.000us        54.10%      40.096ms     756.528us            53  
+                         aten::to         0.95%     701.000us        20.01%      14.832ms     264.857us            56  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 74.120ms
+
++ python torchvision_bench.py --profile --bf16 --channels-last
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        41.00%      18.342ms        41.17%      18.418ms     347.509us            53  
+                      aten::copy_        31.03%      13.882ms        31.03%      13.882ms     243.544us            57  
+          aten::native_batch_norm         6.82%       3.052ms         7.29%       3.263ms      61.566us            53  
+                aten::convolution         6.81%       3.045ms        41.74%      18.672ms     352.302us            53  
+                 aten::clamp_min_         5.05%       2.261ms         5.05%       2.261ms      46.143us            49  
+                         do_infer         4.90%       2.191ms       100.00%      44.735ms      44.735ms             1  
+                       aten::add_         3.67%       1.642ms         3.67%       1.642ms     102.625us            16  
+                   aten::_to_copy         1.63%     729.000us        31.59%      14.132ms     252.357us            56  
+     aten::_batch_norm_impl_index         1.56%     698.000us         7.62%       3.408ms      64.302us            53  
+                         aten::to         1.12%     501.000us        31.72%      14.192ms     253.429us            56  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 44.735ms
+
++ python torchvision_bench.py --profile --quantize
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+           quantized::conv2d_relu        49.49%      12.293ms        53.25%      13.227ms     400.818us            33  
+                quantized::conv2d        25.69%       6.380ms        25.79%       6.406ms     320.300us            20  
+                         do_infer        12.59%       3.126ms       100.00%      24.839ms      24.839ms             1  
+              quantized::add_relu         7.25%       1.800ms         7.32%       1.818ms     113.625us            16  
+                      aten::clone         3.56%     885.000us         3.58%     889.000us     889.000us             1  
+                quantized::linear         0.35%      87.000us         0.36%      90.000us      90.000us             1  
+    aten::_empty_affine_quantized         0.32%      80.000us         0.32%      80.000us       1.096us            73  
+        aten::quantize_per_tensor         0.32%      79.000us         0.32%      79.000us      79.000us             1  
+       aten::quantized_max_pool2d         0.23%      58.000us         0.24%      60.000us      60.000us             1  
+                      aten::empty         0.06%      16.000us         0.06%      16.000us       0.291us            55  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 24.839ms
+
++ python torchvision_bench.py --profile --quantize --channels-last
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+           quantized::conv2d_relu        52.63%      11.815ms        52.87%      11.868ms     359.636us            33  
+                quantized::conv2d        27.80%       6.240ms        27.96%       6.277ms     313.850us            20  
+                         do_infer        10.03%       2.251ms       100.00%      22.448ms      22.448ms             1  
+              quantized::add_relu         7.98%       1.792ms         8.08%       1.813ms     113.312us            16  
+                quantized::linear         0.40%      89.000us         0.41%      91.000us      91.000us             1  
+    aten::_empty_affine_quantized         0.37%      84.000us         0.37%      84.000us       1.167us            72  
+       aten::quantized_max_pool2d         0.25%      57.000us         0.26%      58.000us      58.000us             1  
+        aten::quantize_per_tensor         0.25%      55.000us         0.25%      55.000us      55.000us             1  
+                      aten::empty         0.14%      32.000us         0.14%      32.000us       0.582us            55  
+       aten::_adaptive_avg_pool2d         0.08%      18.000us         0.09%      20.000us      20.000us             1  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 22.448ms
+
++ python torchvision_bench.py --profile --model-name convnext_tiny
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                         Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                  aten::addmm        72.59%      73.344ms        75.86%      76.647ms       2.072ms            37  
+     aten::mkldnn_convolution         7.95%       8.035ms         8.02%       8.104ms     368.364us            22  
+                   aten::gelu         6.74%       6.809ms         6.74%       6.809ms     378.278us            18  
+                  aten::copy_         4.75%       4.799ms         4.75%       4.799ms     114.262us            42  
+      aten::native_layer_norm         2.66%       2.690ms         2.93%       2.957ms     128.565us            23  
+                     do_infer         2.64%       2.668ms       100.00%     101.032ms     101.032ms             1  
+                    aten::mul         0.70%     703.000us         0.70%     703.000us      39.056us            18  
+                   aten::add_         0.56%     564.000us         0.56%     564.000us      31.333us            18  
+           aten::_convolution         0.31%     311.000us         9.57%       9.671ms     439.591us            22  
+                 aten::linear         0.30%     304.000us        76.37%      77.158ms       2.085ms            37  
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 101.032ms
+
++ python torchvision_bench.py --profile --model-name convnext_tiny --channels-last
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                         Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                  aten::addmm        71.17%      73.742ms        76.09%      78.844ms       2.131ms            37  
+     aten::mkldnn_convolution         8.20%       8.498ms         8.26%       8.556ms     388.909us            22  
+                   aten::gelu         8.04%       8.336ms         8.04%       8.336ms     463.111us            18  
+                  aten::copy_         4.86%       5.034ms         4.86%       5.034ms     132.474us            38  
+      aten::native_layer_norm         2.65%       2.744ms         2.73%       2.828ms     122.957us            23  
+                     do_infer         2.37%       2.459ms       100.00%     103.620ms     103.620ms             1  
+            aten::convolution         1.84%       1.907ms         8.43%       8.736ms     397.091us            22  
+                    aten::mul         0.69%     713.000us         0.69%     713.000us      39.611us            18  
+                   aten::add_         0.53%     547.000us         0.53%     547.000us      30.389us            18  
+                 aten::linear         0.31%     322.000us        76.60%      79.373ms       2.145ms            37  
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 103.620ms
+
++ python torchvision_bench.py --profile --model-name convnext_tiny --bf16
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                         Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                  aten::copy_        43.93%      28.050ms        43.93%      28.050ms     138.861us           202  
+                  aten::addmm        22.59%      14.420ms        26.27%      16.772ms     453.297us            37  
+                     aten::to        10.11%       6.457ms        38.64%      24.673ms     154.206us           160  
+                   aten::gelu         9.65%       6.159ms         9.65%       6.159ms     342.167us            18  
+     aten::mkldnn_convolution         9.51%       6.073ms        10.11%       6.458ms     293.545us            22  
+      aten::native_layer_norm         4.65%       2.970ms         4.91%       3.134ms     136.261us            23  
+               aten::_to_copy         2.15%       1.371ms        38.50%      24.582ms     153.637us           160  
+                     do_infer         1.14%     730.000us       100.00%      63.846ms      63.846ms             1  
+                    aten::mul         0.88%     563.000us         2.03%       1.297ms      72.056us            18  
+                   aten::add_         0.87%     557.000us         1.12%     716.000us      39.778us            18  
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 63.846ms
+
++ python torchvision_bench.py --profile --model-name convnext_tiny --bf16 --channels-last
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                         Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                  aten::copy_        41.25%      23.742ms        41.25%      23.742ms     120.518us           197  
+                  aten::addmm        25.24%      14.529ms        27.12%      15.612ms     421.946us            37  
+     aten::mkldnn_convolution        10.92%       6.286ms        10.98%       6.320ms     287.273us            22  
+                   aten::gelu         7.03%       4.048ms         7.03%       4.048ms     224.889us            18  
+      aten::native_layer_norm         5.40%       3.108ms         5.52%       3.175ms     138.043us            23  
+               aten::_to_copy         3.19%       1.837ms        40.27%      23.181ms     144.881us           160  
+                     do_infer         2.32%       1.337ms       100.00%      57.561ms      57.561ms             1  
+                    aten::mul         1.07%     614.000us         2.23%       1.281ms      71.167us            18  
+                   aten::add_         1.02%     587.000us         1.29%     740.000us      41.111us            18  
+                 aten::linear         1.01%     583.000us        92.06%      52.989ms     716.068us            74  
+-----------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 57.561ms
+
++ lscpu
+Architecture:                       x86_64
+CPU op-mode(s):                     32-bit, 64-bit
+Address sizes:                      46 bits physical, 48 bits virtual
+Byte Order:                         Little Endian
+CPU(s):                             2
+On-line CPU(s) list:                0,1
+Vendor ID:                          GenuineIntel
+Model name:                         Intel(R) Xeon(R) Platinum 8488C
+CPU family:                         6
+Model:                              143
+Thread(s) per core:                 2
+Core(s) per socket:                 1
+Socket(s):                          1
+Stepping:                           8
+BogoMIPS:                           4800.00
+Flags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq monitor ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 wbnoinvd ida arat avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq rdpid cldemote movdiri movdir64b md_clear serialize amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities
+Hypervisor vendor:                  KVM
+Virtualization type:                full
+L1d cache:                          48 KiB (1 instance)
+L1i cache:                          32 KiB (1 instance)
+L2 cache:                           2 MiB (1 instance)
+L3 cache:                           105 MiB (1 instance)
+NUMA node(s):                       1
+NUMA node0 CPU(s):                  0,1
+Vulnerability Gather data sampling: Not affected
+Vulnerability Itlb multihit:        Not affected
+Vulnerability L1tf:                 Not affected
+Vulnerability Mds:                  Not affected
+Vulnerability Meltdown:             Not affected
+Vulnerability Mmio stale data:      Not affected
+Vulnerability Retbleed:             Not affected
+Vulnerability Spec rstack overflow: Not affected
+Vulnerability Spec store bypass:    Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:           Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:           Mitigation; Enhanced / Automatic IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence
+Vulnerability Srbds:                Not affected
+Vulnerability Tsx async abort:      Not affected
