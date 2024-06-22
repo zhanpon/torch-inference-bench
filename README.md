@@ -19,5 +19,5 @@ python3 -m pip install --extra-index-url https://download.pytorch.org/whl/cpu -r
 Run benchmarks:
 ```
 export BASH_XTRACEFD=1
-bash experiment.sh | tee results.txt
+bash experiments/1/run.sh | tee results.txt
 ```
