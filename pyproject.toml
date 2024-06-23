@@ -2,8 +2,8 @@
 virtual = true
 dev-dependencies = [
     "click>=8.1.7",
-    "torch==2.2.2+cpu",
-    "torchvision==0.17.2+cpu",
+    "torch==2.3.1+cpu",
+    "torchvision==0.18.1+cpu",
     "setuptools>=69.5.1",
 ]
 

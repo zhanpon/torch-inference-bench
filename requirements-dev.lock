@@ -6,15 +6,16 @@
 #   features: []
 #   all-features: false
 #   with-sources: false
+#   generate-hashes: false
 
 click==8.1.7
-filelock==3.9.0
+filelock==3.13.1
     # via torch
-fsspec==2023.4.0
+fsspec==2024.2.0
     # via torch
-jinja2==3.1.2
+jinja2==3.1.3
     # via torch
-markupsafe==2.1.3
+markupsafe==2.1.5
     # via jinja2
 mpmath==1.3.0
     # via sympy
@@ -24,11 +25,11 @@ numpy==1.26.3
     # via torchvision
 pillow==10.2.0
     # via torchvision
-setuptools==69.5.1
+setuptools==70.1.0
 sympy==1.12
     # via torch
-torch==2.2.2+cpu
+torch==2.3.1+cpu
     # via torchvision
-torchvision==0.17.2+cpu
-typing-extensions==4.8.0
+torchvision==0.18.1+cpu
+typing-extensions==4.9.0
     # via torch
