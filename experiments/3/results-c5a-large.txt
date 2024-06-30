@@ -1,0 +1,104 @@
++ python torchvision_bench.py --channels-last --model-name=resnet50
+<torch.utils.benchmark.utils.common.Measurement object at 0x7fe0b5aaf100>
+do_infer()
+  124.58 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --channels-last --model-name=resnet101
+<torch.utils.benchmark.utils.common.Measurement object at 0x7dd9d69c7fd0>
+do_infer()
+  226.09 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --channels-last --model-name=resnet152
+<torch.utils.benchmark.utils.common.Measurement object at 0x72dace2ca470>
+do_infer()
+  324.47 ms
+  1 measurement, 100 runs , 1 thread
++ python torchvision_bench.py --profile --channels-last --model-name=resnet50
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        46.95%      64.486ms        46.97%      64.514ms       3.226ms            20  
+       aten::_slow_conv2d_forward        41.32%      56.757ms        41.47%      56.962ms       1.726ms            33  
+          aten::native_batch_norm         6.18%       8.493ms         6.34%       8.714ms     164.415us            53  
+                         do_infer         1.27%       1.749ms       100.00%     137.347ms     137.347ms             1  
+                aten::convolution         1.10%       1.516ms        88.78%     121.942ms       2.301ms            53  
+                       aten::add_         0.84%       1.158ms         0.84%       1.158ms      72.375us            16  
+                 aten::clamp_min_         0.66%     905.000us         0.66%     905.000us      18.469us            49  
+                aten::thnn_conv2d         0.36%     492.000us        41.51%      57.016ms       1.728ms            33  
+    aten::max_pool2d_with_indices         0.30%     409.000us         0.30%     409.000us     409.000us             1  
+                      aten::addmm         0.27%     372.000us         0.28%     381.000us     381.000us             1  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 137.347ms
+
++ python torchvision_bench.py --profile --channels-last --model-name=resnet101
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        46.69%     114.279ms        46.71%     114.324ms       3.090ms            37  
+       aten::_slow_conv2d_forward        43.97%     107.614ms        44.09%     107.913ms       1.611ms            67  
+          aten::native_batch_norm         4.44%      10.867ms         4.59%      11.230ms     107.981us           104  
+                aten::convolution         1.28%       3.128ms        91.14%     223.067ms       2.145ms           104  
+                         do_infer         0.98%       2.400ms       100.00%     244.747ms     244.747ms             1  
+               aten::_convolution         0.81%       1.994ms        91.08%     222.923ms       2.143ms           104  
+                       aten::add_         0.76%       1.861ms         0.76%       1.861ms      56.394us            33  
+                 aten::clamp_min_         0.57%       1.399ms         0.57%       1.399ms      13.990us           100  
+     aten::_batch_norm_impl_index         0.51%       1.249ms         4.75%      11.615ms     111.683us           104  
+    aten::max_pool2d_with_indices         0.18%     431.000us         0.18%     431.000us     431.000us             1  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 244.747ms
+
++ python torchvision_bench.py --profile --channels-last --model-name=resnet152
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        45.97%     158.843ms        45.99%     158.904ms       2.943ms            54  
+       aten::_slow_conv2d_forward        45.49%     157.193ms        45.60%     157.560ms       1.560ms           101  
+          aten::native_batch_norm         3.91%      13.522ms         4.05%      13.993ms      90.277us           155  
+                aten::thnn_conv2d         2.10%       7.258ms        45.64%     157.685ms       1.561ms           101  
+                         do_infer         1.46%       5.030ms       100.00%     345.518ms     345.518ms             1  
+                aten::convolution         0.86%       2.955ms        91.93%     317.633ms       2.049ms           155  
+                       aten::add_         0.76%       2.624ms         0.76%       2.624ms      52.480us            50  
+                 aten::clamp_min_         0.57%       1.956ms         0.57%       1.956ms      12.954us           151  
+     aten::_batch_norm_impl_index         0.24%     817.000us         4.20%      14.511ms      93.619us           155  
+                 aten::max_pool2d         0.12%     401.000us         0.12%     401.000us     401.000us             1  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 345.518ms
+
++ lscpu
+Architecture:                       x86_64
+CPU op-mode(s):                     32-bit, 64-bit
+Address sizes:                      48 bits physical, 48 bits virtual
+Byte Order:                         Little Endian
+CPU(s):                             2
+On-line CPU(s) list:                0,1
+Vendor ID:                          AuthenticAMD
+Model name:                         AMD EPYC 7R32
+CPU family:                         23
+Model:                              49
+Thread(s) per core:                 2
+Core(s) per socket:                 1
+Socket(s):                          1
+Stepping:                           0
+BogoMIPS:                           5599.98
+Flags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch topoext ssbd ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 clzero xsaveerptr rdpru wbnoinvd arat npt nrip_save rdpid
+Hypervisor vendor:                  KVM
+Virtualization type:                full
+L1d cache:                          32 KiB (1 instance)
+L1i cache:                          32 KiB (1 instance)
+L2 cache:                           512 KiB (1 instance)
+L3 cache:                           4 MiB (1 instance)
+NUMA node(s):                       1
+NUMA node0 CPU(s):                  0,1
+Vulnerability Gather data sampling: Not affected
+Vulnerability Itlb multihit:        Not affected
+Vulnerability L1tf:                 Not affected
+Vulnerability Mds:                  Not affected
+Vulnerability Meltdown:             Not affected
+Vulnerability Mmio stale data:      Not affected
+Vulnerability Retbleed:             Mitigation; untrained return thunk; SMT enabled with STIBP protection
+Vulnerability Spec rstack overflow: Vulnerable: Safe RET, no microcode
+Vulnerability Spec store bypass:    Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:           Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:           Mitigation; Retpolines, IBPB conditional, STIBP always-on, RSB filling, PBRSB-eIBRS Not affected
+Vulnerability Srbds:                Not affected
+Vulnerability Tsx async abort:      Not affected
