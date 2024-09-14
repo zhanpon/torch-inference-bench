@@ -1,0 +1,157 @@
+<torch.utils.benchmark.utils.common.Measurement object at 0x7efc9d7bb100>
+do_infer()
+  59.42 ms
+  1 measurement, 100 runs , 1 thread
+<torch.utils.benchmark.utils.common.Measurement object at 0x7bd23dbbbfd0>
+do_infer()
+  110.23 ms
+  1 measurement, 100 runs , 1 thread
+<torch.utils.benchmark.utils.common.Measurement object at 0x7e38a17ba440>
+do_infer()
+  161.12 ms
+  1 measurement, 100 runs , 1 thread
+<torch.utils.benchmark.utils.common.Measurement object at 0x76be46aaf0d0>
+do_infer()
+  39.78 ms
+  1 measurement, 100 runs , 1 thread
+<torch.utils.benchmark.utils.common.Measurement object at 0x7933b0eaffd0>
+do_infer()
+  72.45 ms
+  1 measurement, 100 runs , 1 thread
+<torch.utils.benchmark.utils.common.Measurement object at 0x746ce75be440>
+do_infer()
+  103.10 ms
+  1 measurement, 100 runs , 1 thread
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        46.45%      33.313ms        46.48%      33.333ms       1.667ms            20  
+       aten::_slow_conv2d_forward        34.88%      25.012ms        35.04%      25.129ms     761.485us            33  
+                aten::convolution        15.13%      10.848ms        82.00%      58.805ms       1.110ms            53  
+          aten::native_batch_norm         8.36%       5.992ms         8.59%       6.157ms     116.170us            53  
+                       aten::add_         2.21%       1.587ms         2.21%       1.587ms      99.188us            16  
+                 aten::clamp_min_         1.40%       1.003ms         1.40%       1.003ms      20.469us            49  
+                      aten::addmm         0.82%     587.000us         0.83%     593.000us     593.000us             1  
+    aten::max_pool2d_with_indices         0.48%     345.000us         0.48%     345.000us     345.000us             1  
+               aten::_convolution         0.32%     229.000us        81.90%      58.738ms       1.108ms            53  
+                      aten::relu_         0.31%     224.000us         1.46%       1.045ms      21.327us            49  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 71.717ms
+
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        45.24%      56.141ms        45.27%      56.176ms       1.518ms            37  
+       aten::_slow_conv2d_forward        38.49%      47.760ms        38.64%      47.949ms     715.657us            67  
+                aten::convolution         7.31%       9.076ms        84.44%     104.781ms       1.008ms           104  
+          aten::native_batch_norm         6.52%       8.086ms         6.71%       8.321ms      80.010us           104  
+                       aten::add_         2.28%       2.825ms         2.28%       2.825ms      85.606us            33  
+                 aten::clamp_min_         1.18%       1.460ms         1.18%       1.460ms      14.600us           100  
+               aten::_convolution         0.85%       1.054ms        84.33%     104.647ms       1.006ms           104  
+                      aten::addmm         0.49%     613.000us         0.50%     622.000us     622.000us             1  
+     aten::_batch_norm_impl_index         0.40%     502.000us         6.98%       8.656ms      83.231us           104  
+    aten::max_pool2d_with_indices         0.29%     358.000us         0.29%     358.000us     358.000us             1  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 124.092ms
+
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        45.13%      78.655ms        45.15%      78.696ms       1.457ms            54  
+       aten::_slow_conv2d_forward        39.87%      69.488ms        40.03%      69.775ms     690.842us           101  
+          aten::native_batch_norm         5.61%       9.772ms         5.82%      10.143ms      65.439us           155  
+                aten::convolution         4.33%       7.549ms        85.72%     149.409ms     963.929us           155  
+                       aten::add_         2.06%       3.595ms         2.06%       3.595ms      71.900us            50  
+                aten::thnn_conv2d         1.52%       2.657ms        40.10%      69.900ms     692.079us           101  
+                 aten::clamp_min_         1.16%       2.028ms         1.16%       2.028ms      13.430us           151  
+     aten::_batch_norm_impl_index         0.47%     826.000us         6.09%      10.614ms      68.477us           155  
+                      aten::addmm         0.36%     620.000us         0.36%     629.000us     629.000us             1  
+                      aten::relu_         0.24%     421.000us         1.23%       2.150ms      14.238us           151  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 174.304ms
+
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        45.74%      18.869ms        45.90%      18.936ms     357.283us            53  
+                      aten::copy_        30.53%      12.593ms        30.53%      12.593ms     206.443us            61  
+          aten::native_batch_norm         5.63%       2.322ms         5.98%       2.469ms      46.585us            53  
+                 aten::clamp_min_         4.34%       1.789ms         4.34%       1.789ms      36.510us            49  
+                       aten::add_         3.24%       1.338ms         3.24%       1.338ms      83.625us            16  
+                         do_infer         2.60%       1.072ms       100.00%      41.254ms      41.254ms             1  
+                aten::convolution         1.87%     773.000us        46.48%      19.173ms     361.755us            53  
+                         aten::to         1.45%     597.000us        31.15%      12.850ms     214.167us            60  
+    aten::max_pool2d_with_indices         0.92%     381.000us         0.92%     381.000us     381.000us             1  
+                      aten::relu_         0.89%     368.000us         4.43%       1.827ms      37.286us            49  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 41.254ms
+
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        43.58%      32.064ms        43.78%      32.209ms     309.702us           104  
+                      aten::copy_        33.82%      24.884ms        33.82%      24.884ms     222.179us           112  
+          aten::native_batch_norm         5.18%       3.812ms         5.58%       4.108ms      39.500us           104  
+                 aten::clamp_min_         3.80%       2.799ms         3.80%       2.799ms      27.990us           100  
+                       aten::add_         3.03%       2.232ms         3.03%       2.232ms      67.636us            33  
+               aten::_convolution         2.81%       2.071ms        44.22%      32.534ms     312.827us           104  
+                   aten::_to_copy         2.10%       1.543ms        34.40%      25.313ms     228.045us           111  
+                         aten::to         1.70%       1.250ms        34.52%      25.400ms     228.829us           111  
+                         do_infer         1.69%       1.242ms       100.00%      73.574ms      73.574ms             1  
+                aten::convolution         1.03%     758.000us        44.40%      32.667ms     314.106us           104  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 73.574ms
+
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                             Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+         aten::mkldnn_convolution        44.71%      46.708ms        44.90%      46.911ms     302.652us           155  
+                      aten::copy_        32.53%      33.990ms        32.53%      33.990ms     208.528us           163  
+          aten::native_batch_norm         5.26%       5.496ms         5.69%       5.947ms      38.368us           155  
+                 aten::clamp_min_         3.81%       3.980ms         3.81%       3.980ms      26.358us           151  
+                       aten::add_         3.20%       3.345ms         3.20%       3.345ms      66.900us            50  
+                aten::convolution         2.72%       2.844ms        45.58%      47.618ms     307.213us           155  
+                   aten::_to_copy         1.92%       2.006ms        33.06%      34.535ms     213.179us           162  
+               aten::_convolution         1.82%       1.902ms        45.39%      47.418ms     305.923us           155  
+                         aten::to         1.63%       1.698ms        33.19%      34.680ms     214.074us           162  
+                         do_infer         1.15%       1.199ms       100.00%     104.474ms     104.474ms             1  
+---------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 104.474ms
+
+Architecture:                       x86_64
+CPU op-mode(s):                     32-bit, 64-bit
+Address sizes:                      46 bits physical, 48 bits virtual
+Byte Order:                         Little Endian
+CPU(s):                             2
+On-line CPU(s) list:                0,1
+Vendor ID:                          GenuineIntel
+Model name:                         Intel(R) Xeon(R) Platinum 8488C
+CPU family:                         6
+Model:                              143
+Thread(s) per core:                 2
+Core(s) per socket:                 1
+Socket(s):                          1
+Stepping:                           8
+BogoMIPS:                           4800.00
+Flags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq monitor ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 wbnoinvd ida arat avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq rdpid cldemote movdiri movdir64b md_clear serialize amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities
+Hypervisor vendor:                  KVM
+Virtualization type:                full
+L1d cache:                          48 KiB (1 instance)
+L1i cache:                          32 KiB (1 instance)
+L2 cache:                           2 MiB (1 instance)
+L3 cache:                           105 MiB (1 instance)
+NUMA node(s):                       1
+NUMA node0 CPU(s):                  0,1
+Vulnerability Gather data sampling: Not affected
+Vulnerability Itlb multihit:        Not affected
+Vulnerability L1tf:                 Not affected
+Vulnerability Mds:                  Not affected
+Vulnerability Meltdown:             Not affected
+Vulnerability Mmio stale data:      Not affected
+Vulnerability Retbleed:             Not affected
+Vulnerability Spec rstack overflow: Not affected
+Vulnerability Spec store bypass:    Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:           Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:           Mitigation; Enhanced / Automatic IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence
+Vulnerability Srbds:                Not affected
+Vulnerability Tsx async abort:      Not affected
