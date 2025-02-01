@@ -1,12 +1,26 @@
-[tool.rye]
-virtual = true
-dev-dependencies = [
-    "click>=8.1.7",
-    "torch==2.3.1+cpu",
-    "torchvision==0.18.1+cpu",
-    "setuptools>=69.5.1",
+[project]
+name = "torch-inference-bench"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "click>=8.1.8",
+    "setuptools>=75.8.0",
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
 ]
 
-[[tool.rye.sources]]
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu" },
+]
+torchvision = [
+    { index = "pytorch-cpu" },
+]
+
+[[tool.uv.index]]
 name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
+explicit = true
